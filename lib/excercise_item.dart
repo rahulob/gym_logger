@@ -18,6 +18,7 @@ class _ExcerciseItemState extends State<ExcerciseItem> {
       // constraints: BoxConstraints,
       child: Column(
         children: [
+          // Excercise Name
           Text(
             "Bicep curls",
             textAlign: TextAlign.left,
@@ -37,7 +38,8 @@ class _ExcerciseItemState extends State<ExcerciseItem> {
 // Table for the sets information
 Table setsTable() {
   return Table(
-    border: TableBorder.symmetric(outside: const BorderSide(color: Colors.black)),
+    border:
+        TableBorder.symmetric(outside: const BorderSide(color: Colors.black)),
     children: [
       // Header row
       TableRow(

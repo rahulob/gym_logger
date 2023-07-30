@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_logger/excercise_item.dart';
+import 'package:gym_logger/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,8 +13,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Gym Logger')),
-      body: Center(
+      appBar: AppBar(
+        title: const Text('Gym Logger'),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SettingsScreen()),
+            ),
+            icon: const Icon(Icons.settings),
+          )
+        ],
+      ),
+      body: const Center(
         child: Column(
           children: [
             ExcerciseItem(),
