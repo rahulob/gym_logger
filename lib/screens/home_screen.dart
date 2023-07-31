@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_logger/excercise_item.dart';
+import 'package:gym_logger/components/excercise_item.dart';
 import 'package:gym_logger/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,22 +15,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gym Logger'),
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SettingsScreen()),
-            ),
-            icon: const Icon(Icons.settings),
-          )
-        ],
+        actions: homeActions(context),
       ),
       body: const Center(
         child: Column(
           children: [
-            ExcerciseItem(),
-            ExcerciseItem(),
-            ExcerciseItem(),
+            ExcerciseItem(name: 'Bicep Curls'),
           ],
         ),
       ),
@@ -40,4 +30,17 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+// Settings button on home screen
+List<Widget> homeActions(context) {
+  return [
+    IconButton(
+      onPressed: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SettingsScreen()),
+      ),
+      icon: const Icon(Icons.settings),
+    )
+  ];
 }

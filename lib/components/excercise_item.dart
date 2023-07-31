@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gym_logger/screens/excercise_screen.dart';
 
 class ExcerciseItem extends StatefulWidget {
-  const ExcerciseItem({super.key});
+  const ExcerciseItem({super.key, required this.name});
 
+  final String name;
   @override
   State<ExcerciseItem> createState() => _ExcerciseItemState();
 }
@@ -10,25 +12,32 @@ class ExcerciseItem extends StatefulWidget {
 class _ExcerciseItemState extends State<ExcerciseItem> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
-      width: double.infinity,
-      color: Colors.lightGreen[100],
-      // constraints: BoxConstraints,
-      child: Column(
-        children: [
-          // Excercise Name
-          Text(
-            "Bicep curls",
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          //
-          const SizedBox(height: 5),
-          // Table to show excercise data
-          setsTable()
-        ],
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ExcerciseScreen(name: widget.name)),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
+        width: double.infinity,
+        color: Colors.lightGreen[100],
+        // constraints: BoxConstraints,
+        child: Column(
+          children: [
+            // Excercise Name
+            Text(
+              widget.name,
+              textAlign: TextAlign.left,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            //
+            const SizedBox(height: 5),
+            // Table to show excercise data
+            setsTable()
+          ],
+        ),
       ),
     );
   }
