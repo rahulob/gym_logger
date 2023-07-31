@@ -8,19 +8,23 @@ class AppCredits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const TitleText('This app is created by Rahul Gupta'),
-        const Text(
-          'Click below to know more about the project',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 12,
+    return SizedBox(
+      width: double.infinity,
+      height: 150,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const TitleText('This app is created by Rahul Gupta'),
+          const Text(
+            'Click below to know more about the project',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 12,
+            ),
           ),
-        ),
-        link(),
-      ],
+          link(),
+        ],
+      ),
     );
   }
 }

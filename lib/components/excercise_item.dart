@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gym_logger/components/subtitle_text.dart';
+import 'package:gym_logger/components/title_text.dart';
 import 'package:gym_logger/screens/excercise_screen.dart';
 
 class ExcerciseItem extends StatefulWidget {
@@ -21,21 +23,33 @@ class _ExcerciseItemState extends State<ExcerciseItem> {
       child: Container(
         padding: const EdgeInsets.all(8),
         margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
+        decoration: BoxDecoration(border: Border.all(color: Colors.green)),
         width: double.infinity,
-        color: Colors.lightGreen[100],
+        // color: Colors.lightGreen[100],
         // constraints: BoxConstraints,
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // Excercise Name
-            Text(
-              widget.name,
-              textAlign: TextAlign.left,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
             //
-            const SizedBox(height: 5),
+            Image.network(
+              'https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png',
+              width: 60,
+              height: 60,
+            ),
+
             // Table to show excercise data
-            setsTable()
+            Column(
+              children: [
+                Text(
+                  widget.name,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: 5),
+                setsTable(),
+              ],
+            )
           ],
         ),
       ),
@@ -47,18 +61,21 @@ class _ExcerciseItemState extends State<ExcerciseItem> {
 // Table for the sets information
 Table setsTable() {
   return Table(
+    columnWidths: const <int, TableColumnWidth>{
+      0: IntrinsicColumnWidth(flex: 1),
+      1: FixedColumnWidth(120)
+    },
     border:
         TableBorder.symmetric(outside: const BorderSide(color: Colors.black)),
     children: [
       // Header row
       TableRow(
-        decoration: const BoxDecoration(
-          color: Colors.green,
+        decoration: BoxDecoration(
+          color: Colors.green[800],
         ),
         children: [
           centerText('Set'),
-          centerText('Weight'),
-          centerText('Reps'),
+          centerText('Weight X reps'),
         ],
       ),
       // TODO: Fetch sets from data base
@@ -84,28 +101,18 @@ TableRow setInfo({
       // add set index
       Column(
         children: [
-          centerText(index.toString()),
+          TitleText(index.toString()),
           if (reps.length > 1)
-            for (var _ = 1; _ < reps.length; _++)
-              const Text(
-                'Drop Set',
-                style: TextStyle(
-                  fontSize: 10,
-                ),
-              ),
+            for (var _ = 1; _ < reps.length; _++) const SubtitleText('Drop Set')
         ],
       ),
       // add reps and weights
       Column(
         children: [
-          for (int weight in weights) centerText(weight.toString()),
+          for (int i = 0; i < weights.length; i++)
+            TitleText('${weights[i]} kg X ${reps[i]}'),
         ],
-      ),
-      Column(
-        children: [
-          for (int rep in reps) centerText(rep.toString()),
-        ],
-      ),
+      )
     ],
   );
 }
