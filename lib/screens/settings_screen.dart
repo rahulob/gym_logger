@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_logger/components/settings/app_credits.dart';
 import 'package:gym_logger/components/settings/units_change_setting.dart';
 import 'package:gym_logger/components/subtitle_text.dart';
 import 'package:gym_logger/components/title_text.dart';
@@ -25,48 +26,50 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              // Button to change units
-              UnitsChangeSetting(
-                selected: units,
-                onChange: (v) {
-                  _prefs.put('units', v);
-                  setState(() => units = v);
-                },
-              ),
-              const Divider(),
-              // Button to change app theme
-              themeButton(
-                selected: theme,
-                onChange: (v) {
-                  _prefs.put('theme', v ?? 'system');
-                  setState(() => theme = _prefs.get('theme') ?? 'system');
-                },
-              ),
-              const Divider(),
-              // Screen on while you are on the home screen
-              WeightIncrementSetting(
-                weight: weightIncrement,
-                units: units,
-                onChange: (v) {
-                  _prefs.put('increment', v);
-                  setState(() => weightIncrement = v);
-                },
-              ),
-              const Divider(),
-              screenAliveToggle(
-                keepScreenOn: keepScreenAlive,
-                onChange: (v) {
-                  _prefs.put('keepScreenAlive', v);
-                  setState(() => keepScreenAlive = v);
-                },
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            // Button to change units
+            UnitsChangeSetting(
+              selected: units,
+              onChange: (v) {
+                _prefs.put('units', v);
+                setState(() => units = v);
+              },
+            ),
+            const Divider(),
+            // Button to change app theme
+            themeButton(
+              selected: theme,
+              onChange: (v) {
+                _prefs.put('theme', v ?? 'system');
+                setState(() => theme = _prefs.get('theme') ?? 'system');
+              },
+            ),
+            const Divider(),
+            // Screen on while you are on the home screen
+            WeightIncrementSetting(
+              weight: weightIncrement,
+              units: units,
+              onChange: (v) {
+                _prefs.put('increment', v);
+                setState(() => weightIncrement = v);
+              },
+            ),
+            const Divider(),
+            screenAliveToggle(
+              keepScreenOn: keepScreenAlive,
+              onChange: (v) {
+                _prefs.put('keepScreenAlive', v);
+                setState(() => keepScreenAlive = v);
+              },
+            ),
+            const Divider(),
+            Spacer(),
+            const AppCredits(),
+            Spacer(),
+          ],
         ),
       ),
     );

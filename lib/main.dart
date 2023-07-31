@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_logger/screens/home_screen.dart';
-import 'package:gym_logger/theme/dark_theme.dart';
-import 'package:gym_logger/theme/light_theme.dart';
+import 'package:gym_logger/theme/themes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {

@@ -8,10 +8,9 @@ class SubtitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       data,
-      softWrap: true,
       style: const TextStyle(
         fontSize: 12,
-        // fontWeight: FontWeight.w600,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
