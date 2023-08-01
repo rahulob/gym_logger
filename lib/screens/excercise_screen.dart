@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_logger/components/center_text.dart';
+import 'package:gym_logger/components/screen.dart';
 
 class ExcerciseScreen extends StatefulWidget {
   const ExcerciseScreen({super.key, required this.name});
@@ -12,30 +13,28 @@ class ExcerciseScreen extends StatefulWidget {
 class _ExcerciseScreenState extends State<ExcerciseScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Screen(
       appBar: AppBar(
         title: Text(widget.name),
       ),
-      body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Table(
-            columnWidths: const <int, TableColumnWidth>{
-              0: IntrinsicColumnWidth(flex: 0.3),
-              1: FlexColumnWidth(),
-              2: FlexColumnWidth(),
-            },
-            border: TableBorder.all(color: Colors.white),
+      body: Table(
+        columnWidths: const <int, TableColumnWidth>{
+          0: IntrinsicColumnWidth(flex: 0.3),
+          1: FlexColumnWidth(),
+          2: FlexColumnWidth(),
+        },
+        border: TableBorder.all(color: Colors.white),
+        children: [
+          headerRow(),
+          const TableRow(
             children: [
-              headerRow(),
-              const TableRow(
-                children: [
-                  CenterText('1'),
-                  CenterText('100 Kg'),
-                  CenterText('10'),
-                ],
-              ),
+              CenterText('1'),
+              CenterText('100 Kg'),
+              CenterText('10'),
             ],
-          )),
+          ),
+        ],
+      ),
     );
   }
 }

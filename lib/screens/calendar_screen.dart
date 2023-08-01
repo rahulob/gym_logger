@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_logger/components/screen.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -10,7 +11,7 @@ class CalendarScreen extends StatefulWidget {
 class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Screen(
       appBar: AppBar(
         title: const Text('Calendar'),
         

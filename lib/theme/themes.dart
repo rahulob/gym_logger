@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-Color darkBackgroundColor = Colors.black;
+Color darkBackgroundColor = Colors.grey[900]!;
+Color darkPrimaryColor = Colors.black;
 
 ThemeData darkTheme = ThemeData(
   appBarTheme: AppBarTheme(
@@ -8,10 +9,15 @@ ThemeData darkTheme = ThemeData(
   ),
   colorScheme: ColorScheme.fromSeed(
     brightness: Brightness.dark,
-    seedColor: Colors.white,
+    seedColor: Colors.teal,
     background: darkBackgroundColor,
+    secondary: Colors.black,
   ),
-  primaryColor: Colors.black,
+  cardTheme: CardTheme(
+    color: Colors.grey[800],
+  ),
+  primaryColor: darkPrimaryColor,
+  secondaryHeaderColor: Colors.black,
   useMaterial3: true,
   iconButtonTheme: const IconButtonThemeData(
     style: ButtonStyle(
@@ -26,9 +32,12 @@ ThemeData darkTheme = ThemeData(
 
 ThemeData lightTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.deepOrange,
+    seedColor: Colors.teal,
   ),
   useMaterial3: true,
+  cardTheme: CardTheme(
+    color: Colors.grey[100],
+  ),
   iconButtonTheme: const IconButtonThemeData(
     style: ButtonStyle(
       iconSize: MaterialStatePropertyAll(20),
