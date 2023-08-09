@@ -26,6 +26,10 @@ class Preferences {
     return _prefs.get('keepScreenAlive') ?? false;
   }
 
+  bool getConfirmDelete() {
+    return _prefs.get('confirmDelete') ?? true;
+  }
+
   void setUnits(String? unit) {
     _prefs.put('units', unit ?? 'kg');
   }
@@ -42,12 +46,17 @@ class Preferences {
     _prefs.put('keepScreenAlive', value);
   }
 
+  void setConfirmDelete(bool value) {
+    _prefs.put('confirmDelete', value);
+  }
+
   void resetPreferences() {
     _prefs.putAll({
       'theme': 'system',
       'increment': 2.5,
       'units': 'kg',
-      'keepScreenAlive': false
+      'keepScreenAlive': false,
+      'confirmDelete': true,
     });
   }
 }

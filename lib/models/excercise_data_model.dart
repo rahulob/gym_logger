@@ -24,7 +24,7 @@ class ExcerciseData {
       ExcerciseDBModel.columnDescription: description,
       ExcerciseDBModel.columnCategory: category,
       ExcerciseDBModel.columnWeightUnits: weightUnits,
-      ExcerciseDBModel.columnWeightType: weightUnits,
+      ExcerciseDBModel.columnWeightType: weightType,
     };
   }
 }

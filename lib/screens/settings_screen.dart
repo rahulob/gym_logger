@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_logger/components/my_toggle.dart';
 import 'package:gym_logger/components/screen.dart';
 import 'package:gym_logger/components/settings_screen/app_credits.dart';
 import 'package:gym_logger/components/settings_screen/reset_to_default.dart';
@@ -52,6 +53,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ScreenAliveToggle(
                 keepScreenAlive: _prefs.getKeepScreenAlive(),
                 onChange: (v) => _prefs.setKeepScreenAlive(v),
+              ),
+              const Divider(),
+              MyToggle(
+                title: 'Confirm Delete',
+                subTitle: 'Confirm before deleting a excercise',
+                value: _prefs.getConfirmDelete(),
+                onChange: (v) => _prefs.setConfirmDelete(v),
               ),
               const Divider(),
               ResetToDefault(

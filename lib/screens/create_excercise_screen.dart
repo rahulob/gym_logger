@@ -23,14 +23,14 @@ class _CreateExcerciseScreenState extends State<CreateExcerciseScreen> {
   late final _desController = TextEditingController(
     text: widget.data?.description,
   );
-  late String _category = widget.data?.category ?? 'Other';
+  late String _category = widget.data?.category ?? 'other';
   late String _weightType = widget.data?.weightType ?? 'reps';
   late String _weightUnit =
       widget.data?.weightUnits ?? Preferences().getUnits();
   @override
   Widget build(BuildContext context) {
     return Screen(
-      appBar: AppBar(title: const Text('Add New Excercise')),
+      appBar: AppBar(title: const Text('Create New Excercise')),
       body: Column(
         children: [
           // name text field of the excercise
@@ -95,7 +95,7 @@ class _CreateExcerciseScreenState extends State<CreateExcerciseScreen> {
                 child: Text(widget.data == null ? 'Create' : 'Save'),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -104,7 +104,7 @@ class _CreateExcerciseScreenState extends State<CreateExcerciseScreen> {
   _onSubmit() {
     var dbModel = ExcerciseDBModel.instance;
     var data = ExcerciseData(
-      id: widget.data!.id,
+      id: widget.data?.id,
       name: _nameController.text,
       description: _desController.text,
       category: _category,
@@ -112,11 +112,11 @@ class _CreateExcerciseScreenState extends State<CreateExcerciseScreen> {
       weightUnits: _weightUnit,
     );
     // check if to update or insert
-    if (widget.data!.id != null) {
+    if (data.id == null) {
+      dbModel.insertExcerciseData(data);
+    } else {
       dbModel.updateExcerciseData(data);
       Navigator.pop(context);
-    } else {
-      dbModel.insertExcerciseData(data);
     }
     Navigator.pop(context);
     widget.updateParent!();
